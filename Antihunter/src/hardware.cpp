@@ -10,7 +10,6 @@
 #include <RTClib.h>
 #include "esp_wifi.h"
 
-
 extern Preferences prefs;
 extern ScanMode currentScanMode;
 extern std::vector<uint8_t> CHANNELS;
@@ -48,7 +47,6 @@ extern bool lastScanForever;
 extern String macFmt6(const uint8_t *m);
 extern size_t getTargetCount();
 extern void getTrackerStatus(uint8_t mac[6], int8_t &rssi, uint32_t &lastSeen, uint32_t &packets);
-
 
 void initializeHardware()
 {

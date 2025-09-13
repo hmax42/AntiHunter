@@ -8,6 +8,8 @@
 #endif
 #ifndef BUZZER_PIN
 #define BUZZER_PIN 3    // BUZZER +         (GPIO3)
+#define BUZZER_PIN 26 //m5atom
+#define BUZZER_PIN 8 //seeed
 #endif
 #ifndef BUZZER_IS_PASSIVE
 #define BUZZER_IS_PASSIVE 1
@@ -25,14 +27,14 @@
 #define TEMP_SENSOR_PIN 6  // DS18B20       (GPIO6)
 
 // SD Card (SPI)
-#define SD_CS_PIN   2    // CS on D1        (GPIO2)
-#define SD_CLK_PIN  7    // CLK (SCK)       (GPIO7)
-#define SD_MISO_PIN 8    // MISO on D9      (GPIO8)
-#define SD_MOSI_PIN 9    // MOSI on D10     (GPIO9)
+#define SD_CS_PIN   15    // CS on D1        (GPIO2)
+#define SD_CLK_PIN  23    // CLK (SCK)       (GPIO7)
+#define SD_MISO_PIN 33    // MISO on D9      (GPIO8)
+#define SD_MOSI_PIN 19    // MOSI on D10     (GPIO9)
 
 // GPS (UART)
-#define GPS_RX_PIN 44   // GPS RX          (GPIO 44)
-#define GPS_TX_PIN 43   // GPS TX          (GPIO 43)
+#define GPS_RX_PIN 22   // GPS RX          (GPIO 44)
+#define GPS_TX_PIN -1   // GPS TX          (GPIO 43)
 
 extern bool sdAvailable;
 extern bool gpsValid;

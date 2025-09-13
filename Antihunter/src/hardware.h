@@ -17,14 +17,14 @@
 #endif
 
 // SD Card (SPI)
-#define SD_CS_PIN   2    // CS on D1        (GPIO 02)
-#define SD_CLK_PIN  7    // CLK (SCK)       (GPIO 07)
-#define SD_MISO_PIN 8    // MISO on D9      (GPIO 08)
-#define SD_MOSI_PIN 9    // MOSI on D10     (GPIO 09)
+#define SD_CS_PIN   15    // CS on D1        (GPIO2)
+#define SD_CLK_PIN  23    // CLK (SCK)       (GPIO7)
+#define SD_MISO_PIN 33    // MISO on D9      (GPIO8)
+#define SD_MOSI_PIN 19    // MOSI on D10     (GPIO9)
 
 // GPS (UART)
-#define GPS_RX_PIN 44   // GPS RX           (GPIO 44)
-#define GPS_TX_PIN 43   // GPS TX           (GPIO 43)
+#define GPS_RX_PIN 22   // GPS RX          (GPIO 44)
+#define GPS_TX_PIN -1   // GPS TX          (GPIO 43)
 
 // RTC (I2C)
 #define RTC_SDA_PIN 6    // RTC SDA on       (GPIO 05)

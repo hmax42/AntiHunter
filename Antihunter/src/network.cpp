@@ -14,7 +14,7 @@ extern "C"
 
 // Network
 AsyncWebServer *server = nullptr;
-bool meshEnabled = true;
+bool meshEnabled = false;
 static unsigned long lastMeshSend = 0;
 const unsigned long MESH_SEND_INTERVAL = 3500;
 const int MAX_MESH_SIZE = 230;
@@ -197,7 +197,7 @@ a{color:var(--accent)} hr{border:0;border-top:1px dashed #003b24;margin:14px 0}
    <div class="card">
     <h3>Node Configuration</h3>
     <div class="row">
-      <input type="checkbox" id="meshEnabled" checked>
+      <input type="checkbox" id="meshEnabled" unchecked>
       <label for="meshEnabled">Enable Mesh Notifications</label>
     </div>
     <label for="nodeId">Node ID</label>

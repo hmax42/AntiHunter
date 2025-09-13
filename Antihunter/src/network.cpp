@@ -14,7 +14,7 @@ extern "C"
 
 // Network
 AsyncWebServer *server = nullptr;
-bool meshEnabled = true;
+bool meshEnabled = false;
 static unsigned long lastMeshSend = 0;
 const unsigned long MESH_SEND_INTERVAL = 3500;
 const int MAX_MESH_SIZE = 230;
@@ -292,6 +292,35 @@ a{color:var(--accent)} hr{border:0;border-top:1px dashed #003b24;margin:14px 0}
         <a class="btn alt" href="/sniffer-cache" data-ajax="false">View Cache</a>
       </div>
     </form>
+  </div>
+
+   <div class="card">
+    <h3>Node Configuration</h3>
+    <div class="row">
+      <input type="checkbox" id="meshEnabled" unchecked>
+      <label for="meshEnabled">Enable Mesh Notifications</label>
+    </div>
+    <label for="nodeId">Node ID</label>
+    <form id="nodeForm" method="POST" action="/node-id">
+      <input type="text" id="nodeId" name="id" maxlength="16" placeholder="NODE_01">
+      <div class="row" style="margin-top:10px;">
+        <button class="btn primary" type="submit">Save ID</button>
+        <a class="btn alt" href="/mesh-test" data-ajax="true">Test Mesh</a>
+      </div>
+    </form>
+    <hr>
+    <h4 style="margin:12px 0 8px;color:var(--fg)">Buzzer Settings</h4>
+    <form id="buzzerForm" method="POST" action="/config">
+      <label for="beeps">Beeps per Hit</label>
+      <input type="number" id="beeps" name="beeps" min="1" max="10" value="2">
+      <label for="gap">Gap Between Beeps (ms)</label>
+      <input type="number" id="gap" name="gap" min="20" max="2000" value="80">
+      <div class="row" style="margin-top:10px;">
+        <button class="btn primary" type="submit">Save Buzzer</button>
+        <a class="btn alt" href="/beep" data-ajax="true">Test Beep</a>
+      </div>
+    </form>
+    <p class="small">Configure mesh notifications and buzzer behavior for target detection alerts.</p>
   </div>
 
   <div class="card">

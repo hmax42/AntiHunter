@@ -1866,8 +1866,10 @@ void beaconFloodTask(void *pv) {
         for (const auto &entry : beaconCounts) {
             sorted.push_back({entry.first, entry.second});
         }
+
+        //https://en.cppreference.com/w/cpp/algorithm/sort.html
         std::sort(sorted.begin(), sorted.end(),
-                    [](const auto &a, const auto &b) { return a.second > b.second; });
+                    [](const std::pair<String, uint32_t> &a, const std::pair<String, uint32_t> &b) { return a.second > b.second; });
 
         int show = min((int)sorted.size(), 50);
         for (int i = 0; i < show; i++) {

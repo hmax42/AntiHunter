@@ -9,6 +9,7 @@
 #include "esp_wifi.h"
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include <esp32-hal-ledc.h>
 
 extern Preferences prefs;
 extern int cfgBeeps, cfgGapMs;
@@ -51,31 +52,35 @@ extern void getTrackerStatus(uint8_t mac[6], int8_t &rssi, uint32_t &lastSeen, u
 // Buzzer control
 #if BUZZER_IS_PASSIVE
 static bool buzzerInit = false;
+static int res = 10;
+//static int chan = 10; // works for pin 26
+static int chan = 5; // works for pin 
 
 static void buzzerInitIfNeeded(uint32_t f)
 {
     if (!buzzerInit)
     {
-        ledcAttach(BUZZER_PIN, f, 10);
+        ledcSetup(chan, f, res);
+        ledcAttachPin(BUZZER_PIN, chan);
         buzzerInit = true;
     }
     else
     {
-        ledcDetach(BUZZER_PIN);
-        ledcAttach(BUZZER_PIN, f, 10);
+        ledcDetachPin(BUZZER_PIN);
+        ledcAttachPin(BUZZER_PIN, chan);
     }
 }
 
 static void buzzerTone(uint32_t f)
 {
     buzzerInitIfNeeded(f);
-    ledcWrite(BUZZER_PIN, 512); // 50% duty cycle
+    ledcWrite(chan, 512); // 50% duty cycle
 }
 
 static void buzzerOff()
 {
     if (buzzerInit)
-        ledcWrite(BUZZER_PIN, 0);
+        ledcWrite(chan, 0);
 }
 
 #else

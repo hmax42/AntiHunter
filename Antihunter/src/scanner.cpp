@@ -966,7 +966,7 @@ void karmaDetectionTask(void *pv) {
         
         // Optional: List top APs from karmaAPResponses (corrected concatenation)
         std::vector<std::pair<String, uint32_t>> topAPs(karmaAPResponses.begin(), karmaAPResponses.end());
-        std::sort(topAPs.begin(), topAPs.end(), [](const auto& a, const auto& b) { return a.second > b.second; });
+        std::sort(topAPs.begin(), topAPs.end(), [](const std::pair<String, uint32_t> & a, const std::pair<String, uint32_t> & b) { return a.second > b.second; });
         for (size_t i = 0; i < std::min(topAPs.size(), size_t(10)); ++i) {
             results += topAPs[i].first.c_str();  // String to const char*
             results += ": ";
@@ -1075,7 +1075,7 @@ void probeFloodDetectionTask(void *pv) {
         
         // Optional: List top clients from probeRequestCounts (corrected concatenation)
         std::vector<std::pair<String, uint32_t>> topClients(probeRequestCounts.begin(), probeRequestCounts.end());
-        std::sort(topClients.begin(), topClients.end(), [](const auto& a, const auto& b) { return a.second > b.second; });
+        std::sort(topClients.begin(), topClients.end(), [](const std::pair<String, uint32_t> &a, const std::pair<String, uint32_t> &b) { return a.second > b.second; });
         for (size_t i = 0; i < std::min(topClients.size(), size_t(10)); ++i) {
             results += topClients[i].first.c_str();  // String to const char*
             results += ": ";

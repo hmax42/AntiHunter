@@ -54,7 +54,7 @@ extern void getTrackerStatus(uint8_t mac[6], int8_t &rssi, uint32_t &lastSeen, u
 static bool buzzerInit = false;
 static int res = 10;
 //static int chan = 10; // works for pin 26
-static int chan = 5; // works for pin 
+static int chan = 5; // works for pin 8 seeed 
 
 static void buzzerInitIfNeeded(uint32_t f)
 {
@@ -96,11 +96,22 @@ static void buzzerOff()
 }
 #endif
 
+const int pin1 = 2;
+const int pin2 = 3;
+const int pin3 = 4;
+
 void beepOnce(uint32_t freq, uint32_t ms)
 {
+  int r = digitalRead(pin1);
+  if(r == HIGH) {
     buzzerTone(freq);
     delay(ms);
     buzzerOff();
+  } else {
+     digitalWrite(21, LOW);
+    delay(ms);
+    digitalWrite(21, HIGH);
+  }
 }
 
 void beepPattern(int count, int gap_ms)
@@ -117,6 +128,15 @@ void beepPattern(int count, int gap_ms)
 
 void initializeHardware()
 {
+  pinMode(21, OUTPUT); //LED itself
+  digitalWrite(21, HIGH);
+  pinMode(pin2, OUTPUT);
+  pinMode(pin1, INPUT_PULLDOWN);
+  pinMode(pin3, INPUT_PULLDOWN);
+  digitalWrite(pin1, LOW);
+  digitalWrite(pin2, HIGH);
+  digitalWrite(pin3, LOW);
+
     Serial.println("Loading preferences...");
     prefs.begin("ouispy", false);
 

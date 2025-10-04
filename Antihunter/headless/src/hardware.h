@@ -8,13 +8,20 @@
 #include <SD.h>
 
 #ifndef COUNTRY
-#define COUNTRY "US"
+#define COUNTRY "DE"
 #endif
+
+#define ORIGINAL
+//#define M5STACK
+//#define STACK
+//#define GBB
+
+#ifdef ORIGINAL
 #ifndef MESH_RX_PIN
-#define MESH_RX_PIN 4    // TO MESH PIN 9/19 T114/V3
+#define MESH_RX_PIN 4
 #endif
 #ifndef MESH_TX_PIN
-#define MESH_TX_PIN 5    // TO MESH PIN 10/20 T114/V3
+#define MESH_TX_PIN 5
 #endif
 #ifndef VIBRATION_PIN
 #define VIBRATION_PIN 2  // TO SW-420 D0
@@ -33,6 +40,88 @@
 // RTC (I2C)
 #define RTC_SDA_PIN 3    // RTC SDA
 #define RTC_SCL_PIN 6    // RTC SCL
+#endif
+
+#ifdef GBB
+// glorified breadboard
+#ifndef MESH_RX_PIN
+#define MESH_RX_PIN 44
+#endif
+#ifndef MESH_TX_PIN
+#define MESH_TX_PIN 43
+#endif
+#ifndef VIBRATION_PIN
+#define VIBRATION_PIN 2  // TO SW-420 D0
+#endif
+
+// SD Card (SPI)
+#define SD_CS_PIN   1    // CS on D0
+#define SD_CLK_PIN  7    // CLK on D8
+#define SD_MISO_PIN 8    // MISO on D9
+#define SD_MOSI_PIN 9    // MOSI on D10
+
+// GPS (UART)
+#define GPS_RX_PIN 4   // GPS RX
+#define GPS_TX_PIN -1
+
+// RTC (I2C)
+#define RTC_SDA_PIN 5    // RTC SDA
+#define RTC_SCL_PIN 6    // RTC SCL
+#endif
+
+#ifdef STACK
+// the stack
+#ifndef MESH_RX_PIN
+#define MESH_RX_PIN 4
+#endif
+#ifndef MESH_TX_PIN
+#define MESH_TX_PIN 3
+#endif
+#ifndef VIBRATION_PIN
+#define VIBRATION_PIN 2  // TO SW-420 D0 // bad for xiao gps
+#endif
+
+// SD Card (SPI)
+#define SD_CS_PIN   1    // CS on D0
+#define SD_CLK_PIN  7    // CLK on D8
+#define SD_MISO_PIN 8    // MISO on D9
+#define SD_MOSI_PIN 9    // MOSI on D10
+
+// GPS (UART)
+#define GPS_RX_PIN 44   // GPS RX
+#define GPS_TX_PIN 43
+
+// RTC (I2C)
+#define RTC_SDA_PIN 5    // RTC SDA
+#define RTC_SCL_PIN 6    // RTC SCL
+#endif
+
+#ifdef M5STACK
+// the stack
+#ifndef MESH_RX_PIN
+#define MESH_RX_PIN 3
+#endif
+#ifndef MESH_TX_PIN
+#define MESH_TX_PIN 4
+#endif
+#ifndef VIBRATION_PIN
+#define VIBRATION_PIN 7  // TO SW-420 D0
+#endif
+
+// SD Card (SPI)
+#define SD_CS_PIN   -1    // CS on D0
+#define SD_CLK_PIN  -1   // CLK on D8
+#define SD_MISO_PIN -1   // MISO on D9
+#define SD_MOSI_PIN -1   // MOSI on D10
+
+// GPS (UART)
+#define GPS_RX_PIN 15   // GPS RX
+#define GPS_TX_PIN 13
+
+// RTC (I2C)
+#define RTC_SDA_PIN 5    // RTC SDA
+#define RTC_SCL_PIN 6    // RTC SCL
+#endif
 
 // Configuration constants
 #define CONFIG_FILE "/config.json"

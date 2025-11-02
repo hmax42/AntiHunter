@@ -1286,7 +1286,7 @@ void initializeRTC() {
         
         if (!rtc.begin()) {
             Serial.println("[RTC] DS3231 not found at 0x68!");
-            Serial.println("[RTC] Check wiring: SDA->GPIO3, SCL->GPIO6, VCC->3.3V, GND->GND");
+            Serial.printf("[RTC] Check wiring: SDA->GPIO%01d, SCL->GPIO%01d, VCC->3.3V, GND->GND\n", RTC_SDA_PIN, RTC_SCL_PIN);
             rtcAvailable = false;
             return;
         }
@@ -1316,7 +1316,6 @@ void initializeRTC() {
                       now.year(), now.month(), now.day(),
                       now.hour(), now.minute(), now.second());
     }
-    
     rtc.disable32K();
 }
 

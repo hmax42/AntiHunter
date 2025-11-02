@@ -40,7 +40,6 @@
 // RTC (I2C)
 #define RTC_SDA_PIN 3    // RTC SDA
 #define RTC_SCL_PIN 6    // RTC SCL
-
 #endif
 
 #ifdef GBB
@@ -100,10 +99,10 @@
 #ifdef M5STACK
 // the stack
 #ifndef MESH_RX_PIN
-#define MESH_RX_PIN 7
+#define MESH_RX_PIN 3
 #endif
 #ifndef MESH_TX_PIN
-#define MESH_TX_PIN 9
+#define MESH_TX_PIN 4
 #endif
 #ifndef VIBRATION_PIN
 #define VIBRATION_PIN 7  // TO SW-420 D0
@@ -148,7 +147,6 @@ public:
     static void forceRecheck();
 };
 
-// RTC Status
 extern RTC_DS3231 rtc;
 extern bool rtcAvailable;
 extern bool rtcSynced;

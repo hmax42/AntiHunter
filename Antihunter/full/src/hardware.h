@@ -11,10 +11,11 @@
 #define COUNTRY "DE"
 #endif
 
-#define ORIGINAL
+//#define ORIGINAL
 //#define M5STACK
 //#define STACK
 //#define GBB
+#define GROVE
 
 #ifdef ORIGINAL
 #ifndef MESH_RX_PIN
@@ -122,6 +123,34 @@
 #define RTC_SDA_PIN 5    // RTC SDA
 #define RTC_SCL_PIN 6    // RTC SCL
 #endif
+
+#ifdef GROVE
+#ifndef MESH_RX_PIN
+#define MESH_RX_PIN 3
+#endif
+#ifndef MESH_TX_PIN
+#define MESH_TX_PIN 4
+#endif
+#ifndef VIBRATION_PIN
+#define VIBRATION_PIN 2  // TO SW-420 D0
+#endif
+
+// SD Card (SPI)
+#define SD_CS_PIN   1    // CS on D0
+#define SD_CLK_PIN  7    // CLK on D8
+#define SD_MISO_PIN 8    // MISO on D9
+#define SD_MOSI_PIN 9    // MOSI on D10
+
+// GPS (UART)
+#define GPS_RX_PIN 44   // GPS RX
+#define GPS_TX_PIN 43   // GPS TX
+
+// RTC (I2C)
+#define RTC_SDA_PIN 5    // RTC SDA
+#define RTC_SCL_PIN 6    // RTC SCL
+#endif
+
+
 
 // Configuration constants
 #define CONFIG_FILE "/config.json"
